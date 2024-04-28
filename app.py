@@ -18,7 +18,7 @@ def get_image_url():
  
     # Get the image URL
     image_url = blob_client.url
-    return render_template("main.html", image_url=image_url)
+    return image_url
  
 # Route to display the image in the web browser
 @app.route("/")
