@@ -34,7 +34,7 @@ def get_image_url():
 @app.route("/")
 def display_image():
     image_url = get_image_url()
-    return render_template("index.html", image_url=image_url)
+    return render_template("main.html", image_url=image_url)
  
 if __name__ == "__main__":
 app.run(debug=True)
