@@ -37,4 +37,4 @@ def display_image():
     return render_template("main.html", image_url=image_url)
  
 if __name__ == "__main__":
-    app.run(debug=True)
+    app.run(debug=True,port=8080)
