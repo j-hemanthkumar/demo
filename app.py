@@ -1,16 +1,26 @@
 from flask import Flask, render_template
 from azure.identity import DefaultAzureCredential
+from azure.keyvault.secrets import SecretClient
 from azure.storage.blob import BlobServiceClient
  
 app = Flask(__name__)
  
-# Function to retrieve image URL from Azure Blob Storage
-def get_image_url():
-    # Authenticate with Azure Key Vault
+# Function to retrieve Blob Storage connection string from Azure Key Vault
+def get_blob_storage_connection_string():
+    # Authenticate with Azure Key Vault using DefaultAzureCredential
     credential = DefaultAzureCredential()
     key_vault_uri = "c219cf67-c90d-48ff-a0fc-36b560fe855b"
-    # Retrieve the connection string secret from Azure Key Vault
-    blob_storage_connection_string = ...
+    secret_name = "demosecret"
+ 
+    # Create a SecretClient to retrieve the secret from Azure Key Vault
+    secret_client = SecretClient(vault_url=key_vault_uri, credential=credential)
+    secret_value = secret_client.get_secret(secret_name).value
+ 
+    return secret_value
+ 
+# Function to retrieve image URL from Azure Blob Storage
+def get_image_url():
+    blob_storage_connection_string = get_blob_storage_connection_string()
  
     # Connect to Blob Storage
     blob_service_client = BlobServiceClient.from_connection_string(blob_storage_connection_string)
