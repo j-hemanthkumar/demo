@@ -16,6 +16,7 @@ def get_blob_storage_connection_string():
     # Create a SecretClient to retrieve the secret from Azure Key Vault
     secret_client = SecretClient(vault_url=key_vault_uri, credential=credential)
     secret_value = secret_client.get_secret(secret_name, secret_version).value
+    print(secret_value)
  
     return secret_value
  
