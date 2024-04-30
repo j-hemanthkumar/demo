@@ -2,3 +2,5 @@ Flask==2.0.2
 azure-identity==1.6.0
 azure-keyvault-secrets==4.2.0
 azure-storage-blob==12.9.0
+gunicorn
+Werkzeug==2.2.2
