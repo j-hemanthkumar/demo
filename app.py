@@ -9,9 +9,9 @@ app = Flask(__name__)
 def get_blob_storage_connection_string():
     # Authenticate with Azure Key Vault using DefaultAzureCredential
     credential = DefaultAzureCredential()
-    key_vault_uri = "https://demokeyvault1472.vault.azure.net/secrets/demosecret/8dd8ff458b1e47778cc0494a3b78d64a"
+    key_vault_uri = "https://demokeyvault1472.vault.azure.net/secrets/demosecret/22f0bc273eff4066b312318e00963c7c"
     secret_name = "demosecret"
-    secret_version = "8dd8ff458b1e47778cc0494a3b78d64a"
+    secret_version = "22f0bc273eff4066b312318e00963c7c"
  
     # Create a SecretClient to retrieve the secret from Azure Key Vault
     secret_client = SecretClient(vault_url=key_vault_uri, credential=credential)
